@@ -45,5 +45,3 @@ languages
 - [JSON Schema Reference](https://json-schema.org/understanding-json-schema)
 ### OpenAPI Data Types
 - [data types](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#data-types)
-
-### OpenAPI Objects

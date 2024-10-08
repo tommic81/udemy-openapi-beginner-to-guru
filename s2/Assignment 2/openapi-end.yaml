@@ -1,0 +1,34 @@
+openapi: 3.0.2
+info:
+  title: OpenAPI Course
+  description: Specification for OpenAPI Course
+  termsOfService: http://example.com/terms/
+  contact:
+    name: John Thompson
+    url: https://springframework.guru
+    email: john@springframework.guru
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.0"
+servers:
+- url: https://dev.example.com
+  description: Development Server
+- url: https://qa.example.com
+  description: QA Server
+- url: https://prod.example.com
+  description: Production Server
+paths:
+  /v1/customers:
+    get:
+      responses:
+        200:
+          description: List of Customers
+  /v1/beers:
+    get:
+      responses:
+        '200':
+           description: List of Beers 
+        '404':
+           description: Beers have not been found    
+components: {}
