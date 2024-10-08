@@ -31,10 +31,8 @@ paths:
                 maxItems: 100
                 minItems: 1
                 items:
-                  maxLength: 100
-                  minLength: 2
-                  type: string
-                  description: Customer Name
+                  $ref: '#/components/schemas/inline_response_200'
+         
   /v1/beers:
     get:
       responses:
@@ -42,4 +40,36 @@ paths:
           description: List of Beers
         404:
           description: No Beers Found                    
-components: {}
+components:
+  schemas:
+    v1customers_address:
+      type: object
+      properties:
+        line1:
+          type: string
+          example: 123 main
+        city:
+          type: string
+          example: St Pete
+        zipCode:
+          type: string
+          example: "33701"
+    inline_response_200:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firstName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: John
+        lastName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: Thompson
+        address:
+          $ref: '#/components/schemas/v1customers_address'
+      description: customer object
