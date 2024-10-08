@@ -51,6 +51,17 @@ components:
         city:
           type: string
           example: St Pete
+        stateCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 2 Letter State Code
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
         zipCode:
           type: string
           example: "33701"

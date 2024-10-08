@@ -48,3 +48,15 @@ languages
 
 ### OpenAPI Objects
 -[Schema object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schema-object)
+### OpenAPI Enums
+```
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
+          
+          #OR
+          enum: [AL, AK, AZ, AR, CA]
+```
