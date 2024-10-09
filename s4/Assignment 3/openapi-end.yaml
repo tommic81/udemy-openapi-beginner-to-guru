@@ -1,0 +1,129 @@
+openapi: 3.0.2
+info:
+  title: OpenAPI Course
+  description: Specification for OpenAPI Course
+  termsOfService: http://example.com/terms/
+  contact:
+    name: John Thompson
+    url: https://springframework.guru
+    email: john@springframework.guru
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.0"
+servers:
+- url: https://dev.example.com
+  description: Development Server
+- url: https://qa.example.com
+  description: QA Server
+- url: https://prod.example.com
+  description: Production Server
+paths:
+  /v1/customers:
+    get:
+      responses:
+        200:
+          description: List of Customers
+          content:
+            application/json:
+              schema:
+                maxItems: 100
+                minItems: 1
+                type: array
+                description: List of Customers
+                items:
+                  $ref: '#/components/schemas/inline_response_200'
+  /v1/beers:
+    get:
+      responses:
+        200:
+          description: List of Beers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/beers_response_200'  
+        404:
+          description: No Beers Found
+components:
+  schemas:
+    beers_brewery:
+      type: object
+      properties:
+        name:
+          type: string
+        location:
+          type: string
+    beers_response_200:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of a beer
+        style: 
+          type: string
+          description: Beer type
+          example: WHEAT
+          enum: 
+          - ALE
+          - PALE_ALE
+          - IPA
+          - WHEAT
+          - LAGER
+        upc:
+          type: string
+        price:
+          type: number
+          format: float
+          description: price of the beer
+          example: 3.5
+        quantity:
+          type: integer
+          format: int32
+          description: Quantity of the beers
+          example: 6
+        brewery:
+          $ref: '#/components/schemas/beers_brewery'  
+    v1customers_address:
+      type: object
+      properties:
+        line1:
+          type: string
+          example: 123 main
+        city:
+          type: string
+          example: St Pete
+        stateCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          description: 2 Letter State Code
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
+        zipCode:
+          type: string
+          example: "33701"
+    inline_response_200:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firstName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: John
+        lastName:
+          maxLength: 100
+          minLength: 2
+          type: string
+          example: Thompson
+        address:
+          $ref: '#/components/schemas/v1customers_address'
+      description: customer object
