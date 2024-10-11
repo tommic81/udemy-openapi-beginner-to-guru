@@ -36,9 +36,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/BeerPagedList'
         404:
           description: No Beers Found
 components:
@@ -92,14 +90,14 @@ components:
       description: List of Customers
       items:
         $ref: '#/components/schemas/Customer'
-    v1beers_brewery:
+    Brewery:
       type: object
       properties:
         name:
           type: string
         location:
           type: string
-    inline_response_200:
+    Beer:
       type: object
       properties:
         beerName:
@@ -119,5 +117,67 @@ components:
           type: integer
           format: int32
         brewery:
-          $ref: '#/components/schemas/v1beers_brewery'
+          $ref: '#/components/schemas/Brewery'
       description: Beer Object
+    BeerList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Beer'
+    BeerPagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/BeerList'
+      allOf:
+      - $ref: '#/components/schemas/PagedResponse'
+    PagedResponse:
+      type: object
+      properties:
+        pageable:
+          $ref: '#/components/schemas/PagedResponse_pageable'
+        totalPages:
+          type: integer
+          format: int32
+        last:
+          type: boolean
+        totalElements:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        number:
+          type: integer
+          format: int32
+        numberOfElements:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        first:
+          type: boolean
+    PagedResponse_pageable_sort:
+      type: object
+      properties:
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+    PagedResponse_pageable:
+      type: object
+      properties:
+        sort:
+          $ref: '#/components/schemas/PagedResponse_pageable_sort'
+        offset:
+          type: integer
+          format: int32
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        paged:
+          type: boolean
+        unpaged:
+          type: boolean

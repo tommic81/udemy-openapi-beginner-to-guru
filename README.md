@@ -63,3 +63,13 @@ languages
 ## OpenAPI Components
 ### OpenAPI Components Objects
 - [Components object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#components-object)
+### OpenAPI Object Inheritance
+```
+    BeerPagedList:
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/BeerList'
+      allOf:
+      - $ref: '#/components/schemas/PagedResponse'
+```
