@@ -60,3 +60,6 @@ languages
           #OR
           enum: [AL, AK, AZ, AR, CA]
 ```
+## OpenAPI Components
+### OpenAPI Components Objects
+- [Components object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#components-object)
