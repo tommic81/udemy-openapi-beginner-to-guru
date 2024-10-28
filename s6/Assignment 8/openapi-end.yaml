@@ -36,18 +36,20 @@ paths:
       parameters:
       - name: customerId
         in: path
-        description: customerId
+        description: Customer Id
         required: true
-        schema: 
+        style: simple
+        explode: false
+        schema:
           type: string
           format: uuid
       responses:
-        '200':
+        200:
           description: Found Customer
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/customer"
+                $ref: '#/components/schemas/Customer'
   /v1/beers:
     get:
       parameters:
@@ -62,6 +64,25 @@ paths:
                 $ref: '#/components/schemas/BeerPagedList'
         404:
           description: No Beers Found
+  /v1/beers/{bearId}:
+    get:
+      parameters:
+      - name: bearId
+        in: path
+        description: Bear id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        200:
+          description: Found a Bear
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Beer'
 components:
   parameters:
     PageNumberParam:
